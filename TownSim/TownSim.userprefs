@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\waterMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\SquareTurn\Assets\Scripts\GameLogic.cs">
     <Files>
-      <File FileName="Assets\Scripts\waterMovement.cs" Line="36" Column="45" />
+      <File FileName="..\SquareTurn\Assets\Scripts\TurnScript.cs" Line="25" Column="36" />
+      <File FileName="..\SquareTurn\Assets\Scripts\GameLogic.cs" Line="122" Column="88" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

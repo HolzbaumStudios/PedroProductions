@@ -33,7 +33,7 @@ public class waterMovement : MonoBehaviour {
 
 	//Wait until Start
 	IEnumerator StartDelay() {
-		float delayTime = Random.Range (-0.1F, 1.5F);
+		float delayTime = Random.Range (0F, 1.5F);
 		yield return new WaitForSeconds(delayTime);
 		startMovement = true;
 	}

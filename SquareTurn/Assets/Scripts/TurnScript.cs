@@ -7,13 +7,30 @@ public class TurnScript : MonoBehaviour {
 	private int column;
 
 	//---------------FUNCTIONS-------------------------------
-	public void TurnSquare(){
-		string squareName = gameObject.name;
-		//Debug.Log (squareName.Substring (1, 1));
-		row = int.Parse (squareName.Substring (1, 1)); //Get the second letter of the word and convert to string
-		column = int.Parse (squareName.Substring (3, 1)); //Get the fourth letter of the word and convert to string
+	public void StartSquareTurn(){
+		GameObject.Find ("gameManager").SendMessage ("TurnOtherSquares", gameObject.name);
+	}
 
+	public void TurnSquare(int squareState){
 		animation.Play ();
+		StartCoroutine(AnimationSettings(squareState));
+	}
+
+	//Sets the color of the square
+	IEnumerator AnimationSettings(int squareState){
+		yield return new WaitForSeconds(0.5f);
+		//Set Color
+		Color squareColor = Color.blue;
+		switch(squareState){
+			case 0:squareColor = new Color32(0, 155, 169, 255);
+			break;
+			case 1:squareColor = Color.yellow;
+			break;
+		}
+		transform.GetComponent<UnityEngine.UI.Image>().color = squareColor;
+		yield return new WaitForSeconds(0.6f);
+		//Set Rotation
+		transform.eulerAngles = new Vector3(0,0,0);
 	}
 	
 }
