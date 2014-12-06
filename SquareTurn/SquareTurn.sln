@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{139B7414-0154-5A61-E592-59894AD4A2C3}") = "TownSim", "Assembly-CSharp-vs.csproj", "{5695CD03-3544-1FA8-B489-9CFA2CDD6B6D}"
+Project("{D42C1817-323F-26CF-DE86-AF63F628E9EC}") = "SquareTurn", "Assembly-CSharp.csproj", "{A59FF704-255F-40C2-8D2E-3CCAA606BF8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,19 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5695CD03-3544-1FA8-B489-9CFA2CDD6B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5695CD03-3544-1FA8-B489-9CFA2CDD6B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5695CD03-3544-1FA8-B489-9CFA2CDD6B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5695CD03-3544-1FA8-B489-9CFA2CDD6B6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59FF704-255F-40C2-8D2E-3CCAA606BF8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59FF704-255F-40C2-8D2E-3CCAA606BF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59FF704-255F-40C2-8D2E-3CCAA606BF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59FF704-255F-40C2-8D2E-3CCAA606BF8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-<<<<<<< HEAD
-							GlobalSection(MonoDevelopProperties) = preSolution
-=======
-								GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> origin/development
+										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
