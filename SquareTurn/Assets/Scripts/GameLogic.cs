@@ -93,7 +93,6 @@ public class GameLogic : MonoBehaviour {
 			for (int j = 0; j < fieldColumns; j++){
 				//GET THE VALUES FROM THE LEVEL
 				squareArray[i,j].squareState = levelScript.fieldStructureArray[i,j];
-				Debug.Log ("Hallo");
 				//Debug.Log (squareArray[i,j].squareState);
 				//Create the square
 				if(squareArray[i,j].squareState == 0 || squareArray[i,j].squareState == 1){
@@ -202,6 +201,9 @@ public class GameLogic : MonoBehaviour {
 			squareArray[tempRow,tempColumn].squareObject.SendMessage("TurnSquare", squareState); //Turn the square with the new value
 		}
 
+
+		//Check if won
+		CheckIfWon();
 	}
 
 	//Checks the state of the square and change it accordingly
@@ -215,6 +217,25 @@ public class GameLogic : MonoBehaviour {
 		return squareArray[row,column].squareState;
 	}
 
+
+	//Check everyturn if the player has won
+	void CheckIfWon(){
+		bool playerWon = true;
+
+		for(int i = 0; i < fieldRows; i++)
+		{
+			for(int j = 0; j < fieldColumns; j++)
+			{	
+				if(squareArray[i,j].squareState == 0){
+					playerWon = false;
+				}
+			}
+		}
+
+		if(playerWon){
+			Debug.Log ("Gewonnen");
+		}
+	}
 
 
 
