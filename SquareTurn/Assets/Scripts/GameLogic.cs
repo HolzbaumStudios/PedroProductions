@@ -4,12 +4,13 @@ using System.Collections;
 public class GameLogic : MonoBehaviour {
 
 	//--------------Variables----------------
-	int fieldRows = 4;
-	int fieldColumns = 5;
+	int fieldRows;
+	int fieldColumns;
 	float squareSpace = Screen.width/14; //The spacing between the squares  --> otherwise 120
 	float squareSize = Screen.width/15;
 
 	public GameObject squareObject;
+	LevelScript levelScript;
 
 	//-----------------CLASSES---------------
 	public class cSquareClass{
@@ -31,14 +32,17 @@ public class GameLogic : MonoBehaviour {
 
 	//-------------------------START--------------------------------
 	void Start () {
+
+		levelScript = GameObject.Find ("LevelScript").GetComponent<LevelScript>();
+
+		//Get Rows and Columns
+		fieldRows = levelScript.rows;
+		fieldColumns = levelScript.columns;
+
 		InitializeArray (fieldRows, fieldColumns); //Initializes the array
 		PrepareField (); //Prepares the field with the buttons
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 
 
 	//-------------FUNCTIONS-------------------------------
@@ -87,25 +91,34 @@ public class GameLogic : MonoBehaviour {
 
 			//Create the field columns
 			for (int j = 0; j < fieldColumns; j++){
-				//Calculate Placement.
+				//GET THE VALUES FROM THE LEVEL
+				squareArray[i,j].squareState = levelScript.fieldStructureArray[i,j];
+				Debug.Log ("Hallo");
+				//Debug.Log (squareArray[i,j].squareState);
 				//Create the square
-				GameObject column = Instantiate(squareObject,transform.position,transform.rotation) as GameObject;
-				squareArray[i,j].squareObject = column;
-				column.transform.parent = GameObject.Find ("squarePanel").transform;
-				column.name = "r"+i+"c" +j;
-				//Set position regarding width count
-				if(evenNumberWidth)
-				{
-					float halfField = fieldColumns / 2;
-					float difference = halfField - j;
-					column.GetComponent<RectTransform>().anchoredPosition = new Vector2(-difference * squareSpace + squareSpace/2,yPosition);
-				}else{
-					float halfField = fieldColumns / 2;
-					float difference = halfField - j;
-					column.GetComponent<RectTransform>().anchoredPosition = new Vector2(-difference * squareSpace,yPosition);
+				if(squareArray[i,j].squareState == 0 || squareArray[i,j].squareState == 1){
+					GameObject column = Instantiate(squareObject,transform.position,transform.rotation) as GameObject;
+					squareArray[i,j].squareObject = column;
+					column.transform.parent = GameObject.Find ("squarePanel").transform;
+					column.name = "r"+i+"c" +j;
+					//if state is set to 1 change the color
+					if(squareArray[i,j].squareState == 1){
+						column.transform.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
+					}
+					//Set position regarding width count
+					if(evenNumberWidth)
+					{
+						float halfField = fieldColumns / 2;
+						float difference = halfField - j;
+						column.GetComponent<RectTransform>().anchoredPosition = new Vector2(-difference * squareSpace + squareSpace/2,yPosition);
+					}else{
+						float halfField = fieldColumns / 2;
+						float difference = halfField - j;
+						column.GetComponent<RectTransform>().anchoredPosition = new Vector2(-difference * squareSpace,yPosition);
+					}
+					//Set size of the square
+					column.GetComponent<RectTransform>().sizeDelta = new Vector2(squareSize,squareSize);
 				}
-				//Set size of the square
-				column.GetComponent<RectTransform>().sizeDelta = new Vector2(squareSize,squareSize);
 			}
 
 		}
@@ -201,6 +214,8 @@ public class GameLogic : MonoBehaviour {
 
 		return squareArray[row,column].squareState;
 	}
+
+
 
 
 
