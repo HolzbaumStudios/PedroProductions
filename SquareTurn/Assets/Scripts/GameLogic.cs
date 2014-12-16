@@ -10,6 +10,7 @@ public class GameLogic : MonoBehaviour {
 	float squareSize = Screen.width/15;
 
 	public GameObject squareObject;
+	public GameObject turnText;
 	LevelScript levelScript;
 
 	//-----------------CLASSES---------------
@@ -127,6 +128,14 @@ public class GameLogic : MonoBehaviour {
 
 	//Turn the squares around the klicked square
 	public void TurnOtherSquares(string squareName){
+		//Set the counter up
+		int turnNumber;
+		turnNumber = int.Parse(turnText.GetComponent<UnityEngine.UI.Text>().text);
+		turnNumber++;
+		
+		turnText.GetComponent<UnityEngine.UI.Text>().text = turnNumber.ToString ();
+
+		//Variables
 		int row;
 		int column;
 		int tempRow;
