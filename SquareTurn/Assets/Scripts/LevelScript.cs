@@ -10,20 +10,33 @@ public class LevelScript : MonoBehaviour {
 
 
 	void Awake(){
-		DefineField(2); // Put the arraynumber in the brackets
+		int chosenLevel = PlayerPrefs.GetInt ("ChosenLevel");
+		DefineField(chosenLevel); // Put the arraynumber in the brackets
 	}
 
 	//----------------LEVELS------------------
 	void DefineField(int level){
 
-		if(level == 1){
+		if (level == 1) {
+				//Initialize the Array and set every value to 0
+				InitializeArraySize (3, 3);
+				//Define the extras
+		} else if (level == 2) {
+				//Initialize the Array and set every value to 0
+				InitializeArraySize (3, 6);
+				//Define the extras
+		} else if (level == 3) {
 			//Initialize the Array and set every value to 0
-			InitializeArraySize(3,3);
+			InitializeArraySize (3, 6);
 			//Define the extras
-		}else if(level == 2){
-			//Initialize the Array and set every value to 0
-			InitializeArraySize(3,6);
-			//Define the extras
+			fieldStructureArray[0,0] = 1;
+			fieldStructureArray[0,1] = 1;
+
+			fieldStructureArray[1,0] = 1;
+			fieldStructureArray[1,1] = 1;
+
+			fieldStructureArray[2,0] = 1;
+			fieldStructureArray[2,1] = 1;
 		}
 
 		//Set gameManager active to start the level creation
