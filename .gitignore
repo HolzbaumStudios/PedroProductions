@@ -1,3 +1,7 @@
 *.csproj
 *.userprefs
+*.unityproj
 *.sln
+*.user
+*.DS_store
+Inventory/Library/
