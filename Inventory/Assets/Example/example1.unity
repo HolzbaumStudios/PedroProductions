@@ -147,7 +147,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -674, y: -1}
+  m_AnchoredPosition: {x: -123, y: -1.22190004e-05}
   m_SizeDelta: {x: 222, y: 555}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &483335800
@@ -161,9 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f800e260a4a356f4e9d19412575dddaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlots: {fileID: 2062152695}
-  backgroundPanel: {fileID: 0}
-  numberOfColumns: 1
+  inventorySlotsPanel: {fileID: 2062152695}
+  slotBackgroundPanel: {fileID: 196106, guid: 987bca958b30eaf48a7712d31ba41a63, type: 2}
+  numberOfColumns: 3
+  columnSpacing: .680000007
 --- !u!1 &666541403
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,10 +455,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 483335799}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37}
-  m_SizeDelta: {x: -19, y: -96}
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 241}
+  m_SizeDelta: {x: 203, y: 460}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2062152697
 MonoBehaviour:
