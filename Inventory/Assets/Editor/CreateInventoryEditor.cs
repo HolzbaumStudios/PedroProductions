@@ -7,12 +7,13 @@ public class CreateInventoryEditor : Editor
 {
 	public override void OnInspectorGUI()
 	{
-		DrawDefaultInspector();
+		DrawDefaultInspector(); //Use this if the Variables of the Create Inventory Script should be shown
 
-		CreateInventoryScript myScript = (CreateInventoryScript)target;
+		CreateInventoryScript inventoryScript = (CreateInventoryScript)target;
+
 		if(GUILayout.Button ("Create Inventory"))
 		{
-			myScript.CreateInventory();
+			inventoryScript.CreateInventory();
 		}
 	}
 }

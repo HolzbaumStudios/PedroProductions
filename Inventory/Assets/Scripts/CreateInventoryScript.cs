@@ -4,71 +4,82 @@ using System.Collections;
 
 public class CreateInventoryScript : MonoBehaviour {
 
-	/// Public Variables
-	[Tooltip("Drag and drop the inventory panel in here")]
-	public GameObject inventorySlotsPanel; //Reference to the inventory panel
-	[Tooltip("Drag and drop Background Panel Prefab in here. The prefab can be found in the folder Prefabs")]
-	public GameObject slotBackgroundPanel; //Reference to the Background Slot prefab (found in prefabs)
+	//------CLASSES-----------------------
+	[System.Serializable]
+	public class PivotClass : System.Object
+	{
+		[Range(1,50)]
+		public int topSpacing = 20;
+		[Range(1,50)]
+		public int bottomSpacing = 20;
+		[Range(1,50)]
+		public int leftSpacing = 20;
+		[Range(1,50)]
+		public int rightSpacing = 20;
 
-	[Tooltip("Choose how many slots should be created per row")]
+		[Range(1,50)]
+		public int horizontalSpacing = 10;
+		[Range(1,50)]
+		public int verticalSpacing = 10;
+
+	}
+
+	[System.Serializable]
+	public class DesignElementsClass : System.Object
+	{
+		public GameObject imagePrefab;
+		public GameObject buttonPrefab;
+		public Sprite normalBackground;
+		public Sprite hoverBackground;
+	}
+
+
+	///------- Public Variables ------------------------------
 	[Range(1,10)]
-	public int numberOfColumns; //How many item slots are displayed horizontally
-	[Tooltip("The size of the spacing between the columns.")]
-	[Range(0.05f,1)]
-	public float columnSpacing; //the size of the space between the columns -> value = ratio of panel
+	public int columns; //How many item slots are displayed horizontally
+	[Range(1,40)]
+	public int rows; //the size of the space between the columns -> value = ratio of panel
+	[Range(10,150)]
+	public int slotSize; //the size of the slots
+	[Range(10,150)]
+	public int iconSize; //the size of the item icon. normally a bit smaller than the slot size
 
 
-	/// Private Variables
-	private int slotWidth; //The widht of the item slots -> calculated during gameplay
-	private int slotHeight; //The height of the item slots -> calculated during gameplay
+	public PivotClass pivots;
+	public DesignElementsClass designElements;
 
 
 
-	public void CreateInventory(){ //Creates the inventory
 
-		//Get the columnsize and calculate the respective slot width and spacing
-		float columnWidth = GetSlotSize (); 
-		float slotWidth = columnWidth / (1+columnSpacing);
-		float slotHeight = slotWidth;
-		float slotSpacing = columnWidth - slotWidth;
+	///--------- FUNCTIONS -------------------------------------
+	//
+	public void CreateInventory()
+	{
 
+		//Calculate the inventory window based on the public variables
+		float slotWindowWidth = pivots.leftSpacing + (columns * slotSize) + ((columns-1) * pivots.verticalSpacing) + pivots.rightSpacing;
+		float slotWindowHeight = pivots.topSpacing + (rows * slotSize) + ((rows-1) * pivots.horizontalSpacing) + pivots.bottomSpacing;
+		gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (slotWindowWidth, slotWindowHeight);
 
-		GameObject slot;
-		float positionX = slotSpacing + slotWidth / 2;
-		float positionY = slotSpacing + slotHeight / 2;
+		//Create the slots
+		float positionX;
+		float positionY = pivots.topSpacing + slotSize/2;
+		for(int y = 0; y < rows; y++)
+		{
+			positionX = pivots.leftSpacing + slotSize/2;
+			for(int x = 0; x < columns; x++)
+			{
+				//Instantiate
+				GameObject slot = Instantiate(designElements.imagePrefab, transform.position, Quaternion.identity) as GameObject;
+				slot.transform.SetParent(transform);
+				slot.GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize,slotSize);
+				slot.GetComponent<RectTransform>().anchoredPosition = new Vector3(positionX, -positionY, 0);
 
-		for(int y = 0; y < 5; y++){ //Create the rows
-			for(int x = 0; x < numberOfColumns; x++){ //Create the columns
-
-				//Create the object
-				slot = Instantiate (slotBackgroundPanel, transform.position, transform.rotation) as GameObject;
-				slot.transform.SetParent(inventorySlotsPanel.transform);
-				slot.GetComponent<RectTransform>().sizeDelta = new Vector2 (slotWidth, slotHeight);
-				//slot.GetComponent<RectTransform>().rect.height = 2;
-
-				Debug.Log ("X: " + positionX + " Y: " + positionY);
-				//Set position;
-				slot.GetComponent<RectTransform>().anchoredPosition = new Vector2(positionX, -positionY);
-
-				//Set next xCoordinates
-				positionX = positionX + slotSpacing + slotWidth;
+				positionX = positionX + slotSize*1.5f + pivots.verticalSpacing;
 			}
 
-			positionX = slotSpacing + slotWidth / 2; //reset positionX
-			positionY = positionY + slotSpacing + slotHeight;
+			positionY = positionY +slotSize*1.5f + pivots.horizontalSpacing;
 		}
-
-
-
 	}
-
-	private float GetSlotSize(){
-		float slotsPanelWidth = inventorySlotsPanel.GetComponent<RectTransform>().rect.width;
-		//float slotsPanelHeight = inventorySlotsPanel.GetComponent<RectTransform>().rect.height;
 	
-		float columnWidth = (slotsPanelWidth - (slotsPanelWidth /numberOfColumns)*columnSpacing) / numberOfColumns; //minus column spacing because there will be one extra spacing at the beginning or end
-
-		return columnWidth;
-		
-	}
 }
