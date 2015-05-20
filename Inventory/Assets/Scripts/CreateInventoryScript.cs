@@ -35,9 +35,8 @@ public class CreateInventoryScript : MonoBehaviour {
 
 
 	///------- Public Variables ------------------------------
-	[Range(1,10)]
+
 	public int columns; //How many item slots are displayed horizontally
-	[Range(1,40)]
 	public int rows; //the size of the space between the columns -> value = ratio of panel
 	[Range(10,150)]
 	public int slotSize; //the size of the slots
@@ -47,6 +46,12 @@ public class CreateInventoryScript : MonoBehaviour {
 
 	public PivotClass pivots;
 	public DesignElementsClass designElements;
+
+	public bool displayCurrency = false;
+
+	public string currencyName;
+	public Sprite currencyImage;
+	
 
 
 
@@ -75,10 +80,10 @@ public class CreateInventoryScript : MonoBehaviour {
 				slot.GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize,slotSize);
 				slot.GetComponent<RectTransform>().anchoredPosition = new Vector3(positionX, -positionY, 0);
 
-				positionX = positionX + slotSize*1.5f + pivots.verticalSpacing;
+				positionX = positionX + slotSize*1.0f + pivots.verticalSpacing;
 			}
 
-			positionY = positionY +slotSize*1.5f + pivots.horizontalSpacing;
+			positionY = positionY +slotSize*1.0f + pivots.horizontalSpacing;
 		}
 	}
 	
