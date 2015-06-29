@@ -5,3 +5,4 @@
 *.user
 *.DS_store
 Inventory/Library/
+DatabaseTests/Library/
