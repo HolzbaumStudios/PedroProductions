@@ -99,6 +99,7 @@ GameObject:
   - 92: {fileID: 697090182}
   - 124: {fileID: 697090181}
   - 81: {fileID: 697090180}
+  - 114: {fileID: 697090185}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,3 +172,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &697090185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697090179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0ce916314af864aa9491231a2354d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  URL: http://blancos.ch/UnityTests/create.php?

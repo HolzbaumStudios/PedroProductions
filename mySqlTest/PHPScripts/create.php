@@ -4,12 +4,12 @@
 			   //-------Create Users------------
 			function CreateUser(){
 				//Connect DB
-				include('../db_php/connect_db.php');
+				include('connect_db.php');
 
 				
-				$username = $_POST["username"];
-				$password = $_POST["password"];
-				$password2 = $_POST["password2"];
+				$username = $_GET["username"];
+				$password = $_GET["password"];
+				$password2 = $_GET["password2"];
 				
 				if($username == ""){
 					
