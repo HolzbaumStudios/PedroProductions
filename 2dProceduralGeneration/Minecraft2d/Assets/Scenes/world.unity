@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   columns: 20
-  rows: 10
+  rows: 20
   dirtTiles:
   - {fileID: 171946, guid: 580fddc69e035904ca4e635c1a3620e6, type: 2}
   - {fileID: 104518, guid: 15e1050103a812c4e94812f9414cf017, type: 2}
