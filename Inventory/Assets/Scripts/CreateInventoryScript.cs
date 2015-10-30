@@ -30,7 +30,6 @@ public class CreateInventoryScript : MonoBehaviour {
 		public GameObject imagePrefab;
 		public GameObject buttonPrefab;
 		public Sprite normalBackground;
-		public Sprite hoverBackground;
 	}
 
 
@@ -43,8 +42,9 @@ public class CreateInventoryScript : MonoBehaviour {
 	[Range(10,150)]
 	public int iconSize; //the size of the item icon. normally a bit smaller than the slot size
 
-
+	public bool showPivotOptions = false;
 	public PivotClass pivots;
+	public bool showDesignOptions = false;
 	public DesignElementsClass designElements;
 
 	public bool displayCurrency = false;

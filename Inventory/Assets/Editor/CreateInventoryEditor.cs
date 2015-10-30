@@ -20,13 +20,27 @@ public class CreateInventoryEditor : Editor
 		inventoryScript.iconSize = EditorGUILayout.IntSlider("Icon Size", inventoryScript.iconSize, 10, 150 );
 
 
-		bool showDesignOptions = false;
-		showDesignOptions = EditorGUILayout.Foldout(showDesignOptions, "Design Elements");
-		if(showDesignOptions)
+		//Spacing SLider
+		inventoryScript.showPivotOptions = EditorGUILayout.Foldout(inventoryScript.showPivotOptions, "Pivots");
+		if(inventoryScript.showPivotOptions)
 		{
-			EditorGUILayout.IntSlider("Columns", inventoryScript.columns, 1, 10 );
+			inventoryScript.pivots.topSpacing = EditorGUILayout.IntSlider("Top Spacing", inventoryScript.pivots.topSpacing, 1, 50 );
+			inventoryScript.pivots.bottomSpacing = EditorGUILayout.IntSlider("Bottom Spacing", inventoryScript.pivots.bottomSpacing, 1, 50 );
+			inventoryScript.pivots.leftSpacing = EditorGUILayout.IntSlider ("Left Spacing", inventoryScript.pivots.leftSpacing, 1, 50);
+			inventoryScript.pivots.leftSpacing = EditorGUILayout.IntSlider ("Right Spacing", inventoryScript.pivots.rightSpacing, 1, 50);
+
+			inventoryScript.pivots.horizontalSpacing = EditorGUILayout.IntSlider("Horizontal Spacing", inventoryScript.pivots.horizontalSpacing, 1, 50 );
+			inventoryScript.pivots.verticalSpacing = EditorGUILayout.IntSlider("Vertical Spacing", inventoryScript.pivots.verticalSpacing, 1, 50 );
+
 		}
 
+		//Design Elements
+		inventoryScript.showDesignOptions = EditorGUILayout.Foldout(inventoryScript.showDesignOptions, "Design Elements");
+		if(inventoryScript.showPivotOptions)
+		{
+			inventoryScript.designElements.imagePrefab = EditorGUILayout.ObjectField(inventoryScript.designElements.imagePrefab, "Image Prefab");
+			
+		}
 
 		if(GUILayout.Button ("Create Inventory"))
 		{
